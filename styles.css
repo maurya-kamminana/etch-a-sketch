@@ -1,0 +1,21 @@
+#container{
+    display: flex;
+    flex-direction: column;
+
+    width: 540px;
+    height: 540px;
+
+    border: 1px solid red;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+
+    flex: auto;
+}
+
+.cell{
+    border: 1px solid black;
+    flex: auto;
+}
