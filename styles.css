@@ -5,7 +5,7 @@
     width: 540px;
     height: 540px;
 
-    border: 1px solid red;
+    border: 1px solid black;
 }
 
 .row{
@@ -18,4 +18,8 @@
 .cell{
     border: 1px solid black;
     flex: auto;
+}
+
+.cell-reset{
+    background-color: white;
 }
