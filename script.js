@@ -35,15 +35,16 @@ let isProgressiveSet = false;
 const container = document.querySelector('#container');
 container.addEventListener('mouseover', function(e){
     if(e.target.classList.contains('cell')){
+        let opacity = parseFloat(e.target.style.opacity) || 0;
         if(isRandomColor){
             const r = Math.floor(Math.random()*255);
             const g = Math.floor(Math.random()*255);
             const b = Math.floor(Math.random()*255);
+            e.target.style.opacity = 1;
             e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
         }
         else{
             if(isProgressiveSet){
-                let opacity = parseFloat(e.target.style.opacity) || 0;
                 opacity = Math.min(opacity + 0.1, 1);
                 e.target.style.opacity = opacity;
             }
