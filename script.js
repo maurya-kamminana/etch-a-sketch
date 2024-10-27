@@ -30,6 +30,7 @@ resizeBtn.addEventListener('click', function(){
 
 
 let isRandomColor = false;
+let isProgressiveSet = false;
 // add eventListener on container to use event delegation for event mouseover a cell to change its background color to black
 const container = document.querySelector('#container');
 container.addEventListener('mouseover', function(e){
@@ -41,7 +42,15 @@ container.addEventListener('mouseover', function(e){
             e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
         }
         else{
-            e.target.style.backgroundColor = "rgb(0,0,0)";
+            if(isProgressiveSet){
+                let opacity = parseFloat(e.target.style.opacity) || 0;
+                opacity = Math.min(opacity + 0.1, 1);
+                e.target.style.opacity = opacity;
+            }
+            else{
+                e.target.style.opacity = 1;
+            }
+            e.target.style.backgroundColor = `rgb(0,0,0)`;
         }
     }
 });
@@ -54,6 +63,17 @@ randomColorBtn.addEventListener('click', function(){
     }
     else{
         randomColorBtn.textContent = "Change to Random Color";
+    }
+});
+
+const progressiveSetBtn = document.querySelector("#progressive-set");
+progressiveSetBtn.addEventListener('click', function(){
+    isProgressiveSet = !isProgressiveSet;
+    if(isProgressiveSet){
+        progressiveSetBtn.textContent = "Change to solid(non progressive darkening)";
+    }
+    else{
+        progressiveSetBtn.textContent = "Change to Progressive darkening";
     }
 });
 
